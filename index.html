@@ -4,9 +4,10 @@
 	<meta charset="utf-8">
 	<title>a simple postit manager, that uses javascript and local storage ! </title>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="style.css">
 	<meta name="robots" content="noindex">
 </head>
 <body>
@@ -14,11 +15,14 @@
 	<div class="container animate-bottom">
 		<h2>Post-it !</h2>
 		<div class="btn-container">
-			<button id="add-new-note" class="btn btn-primary">add a new note</button>
-			<button id="save-all" class="btn btn-success">save all</button>
+			<button id="add-new-note"  v-on:click="addNewPostit" class="btn btn-primary">add a new note</button>
 		</div>
 		<div class="post-it-container">
-			<div class="no-postit well lead">Keep cool and have a beer there's no postit here !</div>
+			<div v-for="postit in postits" key="postit.id" class="postit">
+				<a v-on:click="removePostit(postit)" class="delete-postit glyphicon glyphicon-remove"></a>
+				<textarea v-model="postit.content"></textarea>
+			</div>
+			<div v-if="postits.length==0" class="no-postit well lead">Keep cool and have a beer there's no postit here !</div>
 		</div>	
 	</div>
 	<script type="text/javascript" src="script.js"></script>

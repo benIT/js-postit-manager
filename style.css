@@ -12,19 +12,26 @@
 	.postit {
 		width: 30%;
 		height: 200px;
-		background-color: rgb(255,196,37);
 		border: 2px solid rgb(0,177,89) ;
 		display: inline-block;
 		overflow: hidden;
 		border-radius: 10px;
 		margin: 10px;
 		padding: 5px;
+		box-shadow: 10px 10px 20px rgb(0,177,89);
 
 	}
 	h2 {
 		color: rgb(0,174,219);
 	}
-
+	.postit, textarea {
+		background-color: rgb(255,196,37);
+	}
+	textarea {
+		width: 100%;
+		min-height: 80%;
+		border: none;
+	}
 	/*******************************/
 	/*Loader stuffs*/
 	/*******************************/
