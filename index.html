@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
 	<meta charset="utf-8">
 	<title>a simple postit manager, that uses javascript and local storage ! </title>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
 	<link rel="stylesheet" href="style.css">
 	<meta name="robots" content="noindex">
 </head>
 <body>
 	<div id="loader"></div>
-	<div class="container animate-bottom">
+	<div ng-controller="postitController as postit" class="container animate-bottom">
 		<h2>Post-it !</h2>
 		<div class="btn-container">
-			<button id="add-new-note"  v-on:click="addNewPostit" class="btn btn-primary">add a new note</button>
+			<button ng-click="addPostit()" id="add-new-note" class="btn btn-primary">add a new note</button>
 		</div>
 		<div class="post-it-container">
-			<div v-for="postit in postits" key="postit.id" class="postit">
-				<a v-on:click="removePostit(postit)" class="delete-postit glyphicon glyphicon-remove"></a>
-				<textarea v-model="postit.content"></textarea>
+			<div ng-repeat="postit in postits" class="postit">
+				<a ng-click="removePostit(postit)" class="delete-postit glyphicon glyphicon-remove"></a>
+				<textarea ng-model="postit.content" ></textarea>
 			</div>
-			<div v-if="postits.length==0" class="no-postit well lead">Keep cool and have a beer there's no postit here !</div>
+			<div ng-if="postits.length==0" class="no-postit well lead">Keep cool and have a beer there's no postit here !</div>
 		</div>	
 	</div>
 	<script type="text/javascript" src="script.js"></script>
